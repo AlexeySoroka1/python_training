@@ -16,6 +16,7 @@ class UntitledTestCase(unittest.TestCase):
     
     def test_untitled_test_case(self):
         driver = self.driver
+        # Open home page
         driver.get("https://www.seleniumeasy.com/test/")
         driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Menu List'])[1]/following::li[2]").click()
         driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Menu List'])[1]/following::a[3]").click()
