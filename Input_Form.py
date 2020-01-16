@@ -19,10 +19,10 @@ class InputForm(unittest.TestCase):
     def test_input_form(self):
         driver = self.driver
         self.open_input_page(driver)
-        self.fill_first_name(driver)
-        self.fill_last_name(driver)
-        self.fill_email(driver)
-        self.fill_phoneNumber(driver)
+        self.fill_first_name(driver, user_name="AlexTest")
+        self.fill_last_name(driver, user_last_name="Soroka")
+        self.fill_email(driver, user_email="Test@gmail.com")
+        self.fill_phoneNumber(driver, user_phone_number="(123)123-3333")
         self.fill_address(driver)
         self.fill_city(driver)
         self.chosse_state(driver)
@@ -66,25 +66,25 @@ class InputForm(unittest.TestCase):
         driver.find_element_by_name("address").click()
         driver.find_element_by_name("address").send_keys("USA")
 
-    def fill_phoneNumber(self, driver):
+    def fill_phoneNumber(self, driver, user_phone_number):
         driver.find_element_by_name("phone").click()
         driver.find_element_by_name("phone").clear()
-        driver.find_element_by_name("phone").send_keys("(123)123-3333")
+        driver.find_element_by_name("phone").send_keys("%s" % user_phone_number)
 
-    def fill_email(self, driver):
+    def fill_email(self, driver, user_email):
         driver.find_element_by_name("email").click()
         driver.find_element_by_name("email").clear()
-        driver.find_element_by_name("email").send_keys("alexsoroka251@gmail.com")
+        driver.find_element_by_name("email").send_keys("%s" % user_email)
 
-    def fill_last_name(self, driver):
+    def fill_last_name(self, driver, user_last_name):
         driver.find_element_by_name("last_name").click()
         driver.find_element_by_name("last_name").clear()
-        driver.find_element_by_name("last_name").send_keys("Soroka")
+        driver.find_element_by_name("last_name").send_keys("%s" % user_last_name)
 
-    def fill_first_name(self, driver):
+    def fill_first_name(self, driver, user_name):
         driver.find_element_by_name("first_name").click()
         driver.find_element_by_name("first_name").clear()
-        driver.find_element_by_name("first_name").send_keys("Alex")
+        driver.find_element_by_name("first_name").send_keys("%s" % user_name)
 
     def open_input_page(self, driver):
         driver.get("https://www.seleniumeasy.com/test/input-form-demo.html")
